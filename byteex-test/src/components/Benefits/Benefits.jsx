@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import styles from './Benefits.module.css';
+import { getBenefits } from '../../lib/contentful';
 
-const BENEFITS = [
+const FALLBACK_BENEFITS = [
   { id: 'sourced', icon: '/image/icon-bullet-2.svg', title: 'Ethically sourced.', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
   { id: 'made',    icon: '/image/icon-bullet-1.svg', title: 'Responsibly made.',   desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
   { id: 'living',  icon: '/image/icon-moon.svg', title: 'Made for living in.',  desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
@@ -8,6 +10,18 @@ const BENEFITS = [
 ];
 
 export default function Benefits() {
+  const [benefitsList, setBenefitsList] = useState(FALLBACK_BENEFITS);
+
+  useEffect(() => {
+    async function loadCMS() {
+      const cmsData = await getBenefits();
+      if (cmsData && cmsData.length > 0) {
+        setBenefitsList(cmsData);
+      }
+    }
+    loadCMS();
+  }, []);
+
   return (
     <section className={styles.section} id="benefits">
       <div className={`wrap ${styles.inner}`}>
@@ -15,7 +29,7 @@ export default function Benefits() {
         <div className={styles.textSide}>
           <h2 className={styles.tagline}>Loungewear you can be proud of.</h2>
           <ul className={styles.list}>
-            {BENEFITS.map(({ id, icon, title, desc }) => (
+            {benefitsList.map(({ id, icon, title, desc }) => (
               <li key={id} className={styles.item}>
                 <div className={styles.itemIcon}>
                   <img src={icon} alt="" width="36" height="36" />
