@@ -1,15 +1,5 @@
 import styles from './Button.module.css';
 
-/**
- * Reusable Button component
- * @param {Object} props
- * @param {'primary'|'outline'} props.variant
- * @param {'sm'|'md'|'lg'} props.size
- * @param {boolean} props.showArrow
- * @param {React.ReactNode} props.children
- * @param {string} props.href - renders as <a> if provided
- * @param {string} props.className
- */
 export default function Button({
   variant = 'primary',
   size = 'md',
@@ -21,8 +11,8 @@ export default function Button({
 }) {
   const cls = [
     styles.btn,
-    styles[`btn--${variant}`],
-    size !== 'md' ? styles[`btn--${size}`] : '',
+    styles[`btn${variant.charAt(0).toUpperCase() + variant.slice(1)}`],
+    size !== 'md' ? styles[`btn${size.charAt(0).toUpperCase() + size.slice(1)}`] : '',
     className,
   ]
     .filter(Boolean)
@@ -32,7 +22,7 @@ export default function Button({
     return (
       <a href={href} className={cls} {...rest}>
         {children}
-        {showArrow && <span className={styles.btn__arrow} aria-hidden="true">→</span>}
+        {showArrow && <span className={styles.btnArrow} aria-hidden="true">→</span>}
       </a>
     );
   }
@@ -40,7 +30,7 @@ export default function Button({
   return (
     <button className={cls} {...rest}>
       {children}
-      {showArrow && <span className={styles.btn__arrow} aria-hidden="true">→</span>}
+      {showArrow && <span className={styles.btnArrow} aria-hidden="true">→</span>}
     </button>
   );
 }
