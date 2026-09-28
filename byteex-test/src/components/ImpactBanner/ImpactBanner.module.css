@@ -1,0 +1,55 @@
+/* ============================================================
+   ImpactBanner — Green stats strip
+   ============================================================ */
+.banner {
+  background: var(--color-gray-100);
+  padding-block: var(--space-8) var(--space-10);
+}
+
+.banner__title {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 3vw, var(--text-2xl));
+  font-weight: 400;
+  letter-spacing: var(--ls-wide);
+  color: var(--color-navy-dark);
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.banner__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-8) var(--space-12);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  text-align: center;
+}
+
+.stat__value {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+  color: var(--color-navy-dark);
+  line-height: 1.2;
+}
+
+.stat__label {
+  font-size: var(--text-sm);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-navy-dark);
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .banner__stats {
+    flex-wrap: nowrap;
+    gap: var(--space-16);
+  }
+}

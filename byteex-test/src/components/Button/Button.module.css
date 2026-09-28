@@ -1,0 +1,65 @@
+/* ============================================================
+   Shared Button Component
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  letter-spacing: var(--ls-normal);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(0) !important;
+}
+
+/* Variants */
+.btn--primary {
+  background: var(--color-navy-mid);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background: var(--color-navy);
+  transform: translateY(-1px);
+  box-shadow: 0px 4px 16px rgba(28, 46, 88, 0.3);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-navy);
+  border: 1.5px solid var(--color-navy);
+}
+
+.btn--outline:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+/* Sizes */
+.btn--sm {
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.btn--lg {
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--text-lg);
+}
+
+.btn__arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
