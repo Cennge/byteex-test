@@ -1,48 +1,42 @@
-import Button from '../Button/Button';
 import styles from './FinalCTA.module.css';
 
-const TRUST_ITEMS = [
-  { id: 'ship',    icon: '🚚', text: 'FREE Shipping on Orders over $200' },
-  { id: 'reviews', icon: '⭐', text: 'Over 500+ 5 Star Reviews Online' },
-  { id: 'ethics',  icon: '🌿', text: 'Made ethically and responsibly.' },
-];
+const STARS = [1,2,3,4,5];
 
-/**
- * FinalCTA Section — closing call-to-action
- * @param {Object} props
- * @param {string} props.tagline
- * @param {string} props.sub
- * @param {string} props.ctaLabel
- * @param {string} props.ctaHref
- * @param {Array} props.trustItems
- */
-export default function FinalCTA({
-  tagline = 'Find something you love.',
-  sub = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque.',
-  ctaLabel = 'Customize Your Outfit',
-  ctaHref = '#shop',
-  trustItems = TRUST_ITEMS,
-}) {
+export default function FinalCTA() {
   return (
-    <section className={styles.cta} id="cta" aria-label="Call to action">
-      <div className="container">
-        <h2 className={styles.cta__tagline}>{tagline}</h2>
-        <p className={styles.cta__sub}>{sub}</p>
+    <section className={styles.section} id="cta">
+      <div className={styles.blobBottom} aria-hidden="true" />
+      <div className="wrap">
+        <h2 className={styles.heading}>Find something you love.</h2>
+        <p className={styles.sub}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.</p>
 
-        <div className={styles.cta__actions}>
-          <Button href={ctaHref} showArrow size="lg" aria-label={ctaLabel}>
-            {ctaLabel}
-          </Button>
+        <div className={styles.ctaGroup}>
+          <a href="#shop" className={styles.ctaBtn}>
+            Customize Your Outfit
+            <span className={styles.ctaBtnArrow} aria-hidden="true">→</span>
+          </a>
+          <div className={styles.ctaReviews}>
+            <div className={styles.ctaStars}>
+              {STARS.map(n => <span key={n} className={styles.ctaStar}>★</span>)}
+            </div>
+            <span className={styles.ctaReviewText}>Over 500+ 5 Star Reviews Online</span>
+          </div>
         </div>
 
-        <ul className={styles.cta__trust} aria-label="Trust badges" role="list">
-          {trustItems.map(({ id, icon, text }) => (
-            <li key={id} className={styles.cta__trust_item}>
-              <span className={styles.cta__trust_icon} aria-hidden="true">{icon}</span>
-              <span>{text}</span>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.trustRow}>
+          <div className={styles.trustItem}>
+            <span className={styles.trustIcon}>🚚</span>
+            <span>FREE Shipping on Orders over $200</span>
+          </div>
+          <div className={styles.trustItem}>
+            <span className={styles.trustIcon}>⭐</span>
+            <span>Over 500+ 5 Star Reviews Online</span>
+          </div>
+          <div className={styles.trustItem}>
+            <span className={styles.trustIcon}>🌿</span>
+            <span>Made ethically and responsibly.</span>
+          </div>
+        </div>
       </div>
     </section>
   );

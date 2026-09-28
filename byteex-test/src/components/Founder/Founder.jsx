@@ -1,55 +1,38 @@
 import styles from './Founder.module.css';
 
-/**
- * Founder Section — brand story / about the founder
- * @param {Object} props
- * @param {string} props.label - small uppercase label above title
- * @param {string} props.title - headline
- * @param {string[]} props.paragraphs - array of bio paragraphs
- * @param {string} props.imageSrc
- * @param {string} props.imageAlt
- */
-export default function Founder({
-  label = 'Our Story',
-  title = 'Be your best self.',
-  paragraphs = [
-    "Hi! My name's [Insert Name], and I founded [Insert] in ____.",
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-    'Fusce non nibh luctus, dignissim risus quis, bibendum dolor. Donec placerat volutpat ligula, ac consectetur felis varius non.',
-    'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu nisl a metus ultrices sodales.',
-  ],
-  imageSrc,
-  imageAlt = 'Founder portrait',
-}) {
+export default function Founder({ images = [] }) {
   return (
-    <section className={styles.founder} id="founder" aria-label="About the founder">
-      <div className="container">
-        <div className={styles.founder__inner}>
+    <section className={styles.section} id="founder">
+      <div className={`wrap ${styles.inner}`}>
 
-          {/* Media */}
-          <figure className={styles.founder__media}>
-            {imageSrc
-              ? <img src={imageSrc} alt={imageAlt} className={styles.founder__image} loading="lazy" />
-              : <div
-                  className={styles.founder__image}
-                  role="presentation"
-                  style={{ background: 'linear-gradient(160deg, #EAEAEA 0%, #F0EEEF 100%)' }}
-                />
-            }
-          </figure>
-
-          {/* Content */}
-          <div className={styles.founder__content}>
-            <p className={styles.founder__label}>{label}</p>
-            <h2 className={styles.founder__title}>{title}</h2>
-            <div className={styles.founder__bio}>
-              {paragraphs.map((para, i) => (
-                <p key={i} className={styles.founder__para}>{para}</p>
-              ))}
-            </div>
+        <div className={styles.imageCluster}>
+          <div className={styles.imgA}>
+            {images[0] ? <img src={images[0]} alt="Founder 1" loading="lazy" /> : <div className={styles.imgPlaceholderA} />}
           </div>
-
+          <div className={styles.imgB}>
+            {images[1] ? <img src={images[1]} alt="Founder 2" loading="lazy" /> : <div className={styles.imgPlaceholderB} />}
+          </div>
+          <div className={styles.imgC}>
+            {images[2] ? <img src={images[2]} alt="Founder 3" loading="lazy" /> : <div className={styles.imgPlaceholderC} />}
+          </div>
         </div>
+
+        <div className={styles.content}>
+          <h2 className={styles.heading}>Be your best self.</h2>
+          <div className={styles.bio}>
+            <p className={styles.para}>Hi! My name's [Insert Name], and I founded [Insert] in ____.</p>
+            <p className={styles.para}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.</p>
+            <p className={styles.para}>Fusce non nibh luctus, dignissim risus quis, bibendum dolor. Donec placerat volutpat ligula, ac consectetur felis varius non. Aliquam a nunc rutrum, porttitor dolor eu, pellentesque est.</p>
+            <p className={styles.para}>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu nisl a metus ultrices sodales.</p>
+          </div>
+          <div className={styles.ctaWrap}>
+            <a href="#shop" className={styles.ctaBtn}>
+              Customize Your Outfit
+              <span className={styles.ctaBtnArrow} aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
   );

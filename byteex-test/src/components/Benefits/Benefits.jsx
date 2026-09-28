@@ -1,65 +1,41 @@
 import styles from './Benefits.module.css';
 
-const DEFAULT_BENEFITS = [
-  {
-    id: 'sourced',
-    icon: '🌿',
-    name: 'Ethically sourced.',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque.',
-  },
-  {
-    id: 'made',
-    icon: '♻️',
-    name: 'Responsibly made.',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque.',
-  },
-  {
-    id: 'comfort',
-    icon: '☁️',
-    name: 'Unimaginably comfortable.',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque.',
-  },
-  {
-    id: 'living',
-    icon: '🏡',
-    name: 'Made for living in.',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque.',
-  },
+const BENEFITS = [
+  { id: 'sourced', icon: '🌿', title: 'Ethically sourced.', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
+  { id: 'made',    icon: '♻️', title: 'Responsibly made.',   desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
+  { id: 'comfort', icon: '☁️', title: 'Unimaginably comfortable.', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
+  { id: 'living',  icon: '🏡', title: 'Made for living in.',  desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
 ];
 
-/**
- * Benefits Section — top product benefits with icons
- * @param {Object} props
- * @param {string} props.title
- * @param {string} props.subtitle
- * @param {Array} props.benefits - [{id, icon, name, desc}]
- */
-export default function Benefits({
-  title = 'Loungewear you can be proud of.',
-  subtitle = 'We make our products with care, so you can wear them with pride.',
-  benefits = DEFAULT_BENEFITS,
-}) {
+export default function Benefits({ imageSrc, imageAlt = 'Product' }) {
   return (
-    <section className={styles.benefits} id="benefits" aria-label="Product benefits">
-      <div className="container">
-        <header className={styles.benefits__header}>
-          <h2 className={styles.benefits__title}>{title}</h2>
-          <p className={styles.benefits__subtitle}>{subtitle}</p>
-        </header>
+    <section className={styles.section} id="benefits">
+      <div className={`wrap ${styles.inner}`}>
 
-        <ul className={styles.benefits__grid} role="list">
-          {benefits.map(({ id, icon, name, desc }) => (
-            <li key={id} className={styles.benefit}>
-              <div className={styles.benefit__icon-wrap} aria-hidden="true">
-                <span className={styles.benefit__icon}>{icon}</span>
-              </div>
-              <div className={styles.benefit__body}>
-                <h3 className={styles.benefit__name}>{name}</h3>
-                <p className={styles.benefit__desc}>{desc}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.textSide}>
+          <h2 className={styles.tagline}>Loungewear you can be proud of.</h2>
+          <ul className={styles.list}>
+            {BENEFITS.map(({ id, icon, title, desc }) => (
+              <li key={id} className={styles.item}>
+                <div className={styles.itemIcon} aria-hidden="true">{icon}</div>
+                <div className={styles.itemBody}>
+                  <h3 className={styles.itemTitle}>{title}</h3>
+                  <p className={styles.itemDesc}>{desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.imageSide}>
+          <div className={styles.productImg}>
+            {imageSrc
+              ? <img src={imageSrc} alt={imageAlt} loading="lazy" />
+              : <div className={styles.imgPlaceholder} />}
+          </div>
+          <p className={styles.productLabel}>White Robe</p>
+        </div>
+
       </div>
     </section>
   );

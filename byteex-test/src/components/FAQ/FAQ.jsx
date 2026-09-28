@@ -1,91 +1,55 @@
 import { useState } from 'react';
 import styles from './FAQ.module.css';
 
-const DEFAULT_FAQS = [
-  {
-    id: 'faq-1',
-    question: 'Lorem ipsum dolor sit amet',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-  {
-    id: 'faq-2',
-    question: 'Lorem ipsum dolor sit amet',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-  {
-    id: 'faq-3',
-    question: 'Lorem ipsum dolor sit amet',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-  {
-    id: 'faq-4',
-    question: 'Lorem ipsum dolor sit amet',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-  {
-    id: 'faq-5',
-    question: 'Lorem ipsum dolor sit amet',
-    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
+const FAQS = [
+  { id: 'faq1', q: 'Lorem ipsum dolor sit amet',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
+  { id: 'faq2', q: 'Lorem ipsum dolor sit amet',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
+  { id: 'faq3', q: 'Lorem ipsum dolor sit amet',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
+  { id: 'faq4', q: 'Lorem ipsum dolor sit amet',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
+  { id: 'faq5', q: 'Lorem ipsum dolor sit amet',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
 ];
 
-/**
- * FAQ Section — accessible accordion
- * @param {Object} props
- * @param {string} props.title
- * @param {Array} props.faqs - [{id, question, answer}]
- */
-export default function FAQ({ title = 'Frequently asked questions.', faqs = DEFAULT_FAQS }) {
+export default function FAQ({ imageSrc }) {
   const [openId, setOpenId] = useState(null);
-
-  const toggle = (id) => setOpenId(prev => (prev === id ? null : id));
-
   return (
-    <section className={styles.faq} id="faq" aria-label="FAQ">
-      <div className="container">
-        <header className={styles.faq__header}>
-          <h2 className={styles.faq__title}>{title}</h2>
-        </header>
+    <section className={styles.section} id="faq">
+      <div className={`wrap ${styles.inner}`}>
 
-        <dl className={styles.faq__list}>
-          {faqs.map(({ id, question, answer }) => {
-            const isOpen = openId === id;
-            return (
-              <div key={id} className={styles.faq__item}>
-                <dt>
-                  <button
-                    id={`${id}-btn`}
-                    className={styles.faq__question}
-                    aria-expanded={isOpen}
-                    aria-controls={`${id}-answer`}
-                    onClick={() => toggle(id)}
-                  >
-                    <span className={styles.faq__question_text}>{question}</span>
-                    <span
-                      className={[
-                        styles.faq__toggle,
-                        isOpen ? styles['faq__toggle--open'] : '',
-                      ].join(' ')}
-                      aria-hidden="true"
+        <div className={styles.faqSide}>
+          <h2 className={styles.heading}>Frequently asked questions.</h2>
+          <dl className={styles.list}>
+            {FAQS.map(({ id, q, a }) => {
+              const isOpen = openId === id;
+              return (
+                <div key={id} className={styles.item}>
+                  <dt>
+                    <button
+                      className={styles.question}
+                      aria-expanded={isOpen}
+                      aria-controls={`${id}ans`}
+                      onClick={() => setOpenId(prev => prev === id ? null : id)}
                     >
-                      +
-                    </span>
-                  </button>
-                </dt>
-                {isOpen && (
-                  <dd
-                    id={`${id}-answer`}
-                    role="region"
-                    aria-labelledby={`${id}-btn`}
-                    className={styles.faq__answer}
-                  >
-                    {answer}
-                  </dd>
-                )}
-              </div>
-            );
-          })}
-        </dl>
+                      <span className={styles.questionText}>{q}</span>
+                      <span className={isOpen ? `${styles.toggle} ${styles.toggleOpen}` : styles.toggle} aria-hidden="true">+</span>
+                    </button>
+                  </dt>
+                  {isOpen && (
+                    <dd id={`${id}ans`} className={styles.answer}>{a}</dd>
+                  )}
+                </div>
+              );
+            })}
+          </dl>
+        </div>
+
+        <div className={styles.imageSide}>
+          <div className={styles.productImg}>
+            {imageSrc
+              ? <img src={imageSrc} alt="Product" loading="lazy" />
+              : <div className={styles.imgPlaceholder} />}
+          </div>
+        </div>
+
       </div>
     </section>
   );

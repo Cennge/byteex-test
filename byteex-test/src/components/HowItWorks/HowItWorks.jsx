@@ -1,65 +1,40 @@
-import Button from '../Button/Button';
 import styles from './HowItWorks.module.css';
 
-const DEFAULT_STEPS = [
-  {
-    id: 'browse',
-    icon: '🛍️',
-    title: 'You save.',
-    desc: 'Browse our comfort sets and save 15% when you bundle.',
-  },
-  {
-    id: 'ship',
-    icon: '🚚',
-    title: 'We ship.',
-    desc: 'We ship your items within 1–2 days of receiving your order.',
-  },
-  {
-    id: 'enjoy',
-    icon: '🌙',
-    title: 'You enjoy!',
-    desc: 'Wear Byteex around the house, out on the town, or in bed.',
-  },
+const STEPS = [
+  { id: 'save',  icon: '🛍️', title: 'You save.',   desc: 'Browse our comfort sets and save 15% when you bundle.' },
+  { id: 'ship',  icon: '🚚', title: 'We ship.',    desc: 'We ship your items within 1–2 days of receiving your order.' },
+  { id: 'enjoy', icon: '🌙', title: 'You enjoy!',  desc: 'Wear Byteex around the house, out on the town, or in bed.' },
 ];
 
-/**
- * HowItWorks Section — 3-step process
- * @param {Object} props
- * @param {string} props.title
- * @param {string} props.subtitle
- * @param {Array} props.steps - [{id, icon, title, desc}]
- * @param {string} props.ctaLabel
- * @param {string} props.ctaHref
- */
-export default function HowItWorks({
-  title = 'Comfort made easy',
-  subtitle = 'Three simple steps to feel amazing.',
-  steps = DEFAULT_STEPS,
-  ctaLabel = 'Customize Your Outfit',
-  ctaHref = '#shop',
-}) {
-  return (
-    <section className={styles.how} id="how-it-works" aria-label="How it works">
-      <div className="container">
-        <header className={styles.how__header}>
-          <h2 className={styles.how__title}>{title}</h2>
-          <p className={styles.how__sub}>{subtitle}</p>
-        </header>
+const STARS = [1,2,3,4,5];
 
-        <ol className={styles.how__steps} aria-label="Steps">
-          {steps.map(({ id, icon, title: stepTitle, desc }) => (
-            <li key={id} className={styles.step}>
-              <span className={styles.step__icon} aria-hidden="true">{icon}</span>
-              <h3 className={styles.step__title}>{stepTitle}</h3>
-              <p className={styles.step__desc}>{desc}</p>
+export default function HowItWorks() {
+  return (
+    <section className={styles.section} id="how-it-works">
+      <div className="wrap">
+        <h2 className={styles.heading}>Comfort made easy</h2>
+        <ol className={styles.cards}>
+          {STEPS.map(({ id, icon, title, desc }) => (
+            <li key={id} className={styles.card}>
+              <span className={styles.cardIcon} aria-hidden="true">{icon}</span>
+              <h3 className={styles.cardTitle}>{title}</h3>
+              <p className={styles.cardDesc}>{desc}</p>
             </li>
           ))}
         </ol>
-
-        <div className={styles.how__cta}>
-          <Button href={ctaHref} showArrow aria-label={ctaLabel}>
-            {ctaLabel}
-          </Button>
+        <div className={styles.ctaWrap}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+            <a href="#shop" className={styles.ctaBtn}>
+              Customize Your Outfit
+              <span className={styles.ctaBtnArrow} aria-hidden="true">→</span>
+            </a>
+            <div className={styles.ctaReviews}>
+              <div className={styles.ctaStars}>
+                {STARS.map(n => <span key={n} className={styles.ctaStar}>★</span>)}
+              </div>
+              <span className={styles.ctaReviewText}>Over 500+ 5 Star Reviews Online</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

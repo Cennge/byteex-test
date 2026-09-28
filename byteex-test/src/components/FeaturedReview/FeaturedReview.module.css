@@ -1,0 +1,68 @@
+.wrap {
+  padding-block: 40px 32px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 28px 21px 28px 19px;
+  max-width: 454px;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 8px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star { color: var(--yellow); font-size: 9.68px; }
+
+.count {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--gray-600);
+  margin-left: 12px;
+}
+
+.avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  background: var(--navy-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.reviewer {
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  color: var(--gray-700);
+}
+
+.reviewRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 12px;
+}
+
+.text {
+  font-size: 12px;
+  line-height: 23px;
+  letter-spacing: 0.04em;
+  color: var(--gray-700);
+}

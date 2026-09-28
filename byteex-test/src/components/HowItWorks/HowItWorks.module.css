@@ -1,97 +1,110 @@
-/* ============================================================
-   HowItWorks Section
-   ============================================================ */
-.how {
-  padding-block: var(--space-16) var(--space-20);
+.section {
+  padding-block: 60px 80px;
 }
 
-.how__header {
-  text-align: center;
-  margin-bottom: var(--space-12);
-}
-
-.how__title {
-  font-family: var(--font-body);
-  font-size: clamp(1.5rem, 4vw, 2rem);
+.heading {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
-  letter-spacing: var(--ls-wide);
-  color: var(--color-navy);
-  margin-bottom: var(--space-3);
+  line-height: 40px;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 48px;
 }
 
-.how__sub {
-  font-size: var(--text-base);
-  letter-spacing: var(--ls-normal);
-  color: var(--color-text-body);
-}
-
-.how__steps {
+.cards {
   display: grid;
-  gap: var(--space-6);
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
-.step {
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-border);
+  border-radius: var(--radius-card);
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-4);
-  padding: var(--space-8);
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-300);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.step:hover {
+.card:hover {
   transform: translateY(-3px);
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
 }
 
-.step__icon {
-  font-size: 2rem;
+.cardIcon {
+  font-size: 2.5rem;
   line-height: 1;
+  margin-bottom: 4px;
 }
 
-.step__number {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
+.cardTitle {
+  font-family: var(--font-sans);
+  font-size: 22px;
   font-weight: 400;
-  color: var(--color-cream);
-  line-height: 1;
+  line-height: 40px;
+  letter-spacing: 0.04em;
+  color: var(--navy);
 }
 
-.step__title {
-  font-family: var(--font-body);
-  font-size: var(--text-lg);
-  font-weight: 400;
-  letter-spacing: var(--ls-wide);
-  color: var(--color-navy);
-  line-height: 1.2;
+.cardDesc {
+  font-size: 15px;
+  line-height: 23px;
+  letter-spacing: 0.03em;
+  color: var(--text-body);
 }
 
-.step__desc {
-  font-size: var(--text-base);
-  letter-spacing: var(--ls-normal);
-  color: var(--color-text-body);
-  line-height: 1.53;
-}
-
-.how__cta {
+.ctaWrap {
   display: flex;
   justify-content: center;
-  margin-top: var(--space-10);
+  margin-top: 40px;
 }
 
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  height: 56px;
+  background: var(--navy-mid);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-btn);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.ctaBtn:hover {
+  background: var(--navy);
+  transform: translateY(-1px);
+}
+
+.ctaBtnArrow { font-size: 1.2rem; transition: transform 0.2s; }
+.ctaBtn:hover .ctaBtnArrow { transform: translateX(4px); }
+
+.ctaReviews {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaStars { display: flex; gap: 2px; }
+.ctaStar { color: var(--yellow); font-size: 0.7rem; }
+.ctaReviewText { font-size: 12px; letter-spacing: 0.02em; color: var(--gray-600); }
+
 @media (min-width: 640px) {
-  .how__steps {
-    grid-template-columns: 1fr 1fr;
-  }
+  .cards { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 1024px) {
-  .how__steps {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  .cards { grid-template-columns: 1fr 1fr 1fr; }
 }
