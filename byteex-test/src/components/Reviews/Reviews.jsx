@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import styles from './Reviews.module.css';
 
 const STARS = [1,2,3,4,5];
@@ -9,10 +10,24 @@ const REVIEWS = [
 ];
 
 export default function Reviews() {
+  const scrollRef = useRef(null);
+
   const ugcImages = Array.from({ length: 22 }, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
     return `/image/ugc-${num}.png`;
   });
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -354, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 354, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className={styles.section} id="reviews">
@@ -23,31 +38,56 @@ export default function Reviews() {
         </header>
       </div>
 
-      <div className={styles.scrollTrack} role="list">
-        {REVIEWS.map(({ id, initials, name, body }) => (
-          <article key={id} className={styles.card} role="listitem">
-            <div className={styles.cardTop}>
-              <div className={styles.avatar} aria-hidden="true">{initials}</div>
-              <div className={styles.cardMeta}>
-                <span className={styles.cardName}>{name}</span>
-                <div className={styles.stars} aria-label="5 stars">
-                  {STARS.map(n => <span key={n} className={styles.star}>★</span>)}
-                </div>
+      <div className={styles.ugcGrid} aria-label="Customer photos">
+        {Array.from({ length: Math.ceil(ugcImages.length / 2) }).map((_, colIdx) => (
+          <div key={colIdx} className={styles.ugcCol}>
+            {ugcImages.slice(colIdx * 2, colIdx * 2 + 2).map((src, idx) => (
+              <div key={idx} className={styles.ugcCell}>
+                <img src={src} alt={`Customer photo ${colIdx * 2 + idx + 1}`} loading="lazy" />
               </div>
-            </div>
-            <blockquote className={styles.cardText}><p>{body}</p></blockquote>
-          </article>
+            ))}
+          </div>
         ))}
       </div>
 
-      <hr className={styles.divider} />
+      <div className={styles.sliderContainer}>
+        <button className={`${styles.sliderBtn} ${styles.prevBtn}`} onClick={scrollLeft} aria-label="Previous review">
+          &#10094;
+        </button>
+        
+        <div className={styles.scrollTrack} role="list" ref={scrollRef}>
+          {REVIEWS.map(({ id, name, body }) => (
+            <article key={id} className={styles.card} role="listitem">
+              <div className={styles.cardTop}>
+                <div className={styles.avatar} aria-hidden="true"></div>
+                <div className={styles.cardMeta}>
+                  <div className={styles.stars} aria-label="5 stars">
+                    {STARS.map(n => <span key={n} className={styles.star}>★</span>)}
+                  </div>
+                  <span className={styles.cardName}>{name}</span>
+                </div>
+              </div>
+              <blockquote className={styles.cardText}><p>{body}</p></blockquote>
+            </article>
+          ))}
+        </div>
 
-      <div className={styles.ugcGrid} aria-label="Customer photos">
-        {ugcImages.map((src, idx) => (
-          <div key={idx} className={styles.ugcCell}>
-            <img src={src} alt={`Customer photo ${idx + 1}`} loading="lazy" />
+        <button className={`${styles.sliderBtn} ${styles.nextBtn}`} onClick={scrollRight} aria-label="Next review">
+          &#10095;
+        </button>
+      </div>
+
+      <div className={styles.ctaGroup}>
+        <a href="#shop" className={styles.ctaBtn}>
+          Customize Your Outfit
+          <span className={styles.ctaBtnArrow} aria-hidden="true">→</span>
+        </a>
+        <div className={styles.ctaReviews}>
+          <div className={styles.ctaStars}>
+            {STARS.map(n => <span key={n} className={styles.ctaStar}>★</span>)}
           </div>
-        ))}
+          <span className={styles.ctaReviewText}>Over 500+ 5 Star Reviews Online</span>
+        </div>
       </div>
     </section>
   );

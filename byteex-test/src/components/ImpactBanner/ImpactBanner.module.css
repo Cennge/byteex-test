@@ -1,23 +1,22 @@
 .banner {
-  background: var(--gray-100);
-  padding-block: 40px;
+  background: #F0EEEF;
+  padding-block: 60px;
 }
 
 .title {
   font-family: var(--font-sans);
-  font-size: clamp(1.25rem, 2.5vw, 1.5625rem);
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--navy-dark);
+  color: var(--navy);
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .stats {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 32px 64px;
+  align-items: center;
 }
 
 .stat {
@@ -25,25 +24,45 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 4px;
+  gap: 6px;
+  padding: 0 48px;
+}
+
+.stat:not(:last-child) {
+  border-right: 1px solid var(--gray-200);
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 8px;
 }
 
 .statValue {
   font-family: var(--font-sans);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--navy-dark);
-  line-height: 20px;
+  color: var(--navy);
+  line-height: 1.2;
 }
 
 .statLabel {
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.03em;
-  color: var(--navy-dark);
-  line-height: 20px;
+  color: var(--navy);
+  line-height: 1.2;
 }
 
-@media (min-width: 768px) {
-  .stats { flex-wrap: nowrap; gap: 80px; }
+@media (max-width: 768px) {
+  .stats { 
+    flex-direction: column; 
+    gap: 32px;
+  }
+  .stat { padding: 0; }
+  .stat:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 32px;
+  }
 }

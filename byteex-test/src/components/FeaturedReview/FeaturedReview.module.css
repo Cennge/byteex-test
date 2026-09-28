@@ -1,21 +1,36 @@
 .wrap {
-  padding-block: 40px 32px;
+  position: relative;
+  z-index: 10;
 }
 
 .card {
   background: var(--white);
   border: 1px solid var(--gray-100);
   border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   padding: 28px 21px 28px 19px;
   max-width: 454px;
+  margin-bottom: -60px; /* Overlap next section */
 }
 
-.cardTop {
+.cardHeader {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.reviewerInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .stars {
@@ -29,7 +44,6 @@
   font-size: 11px;
   letter-spacing: 0.02em;
   color: var(--gray-600);
-  margin-left: 12px;
 }
 
 .avatar {
@@ -44,20 +58,12 @@
   font-size: 13px;
   font-weight: 500;
   flex-shrink: 0;
-  margin-right: 10px;
 }
 
 .reviewer {
   font-size: 15px;
   letter-spacing: 0.03em;
   color: var(--gray-700);
-}
-
-.reviewRow {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 12px;
 }
 
 .text {

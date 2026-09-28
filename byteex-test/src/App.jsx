@@ -20,11 +20,11 @@ export default function App() {
         <FeaturedReview />
         <AsSeenIn />
         <Benefits />
-        <ImpactBanner />
         <Founder />
         <HowItWorks />
         <Reviews />
         <FAQ />
+        <ImpactBanner />
         <FinalCTA />
       </main>
     </>

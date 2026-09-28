@@ -1,9 +1,9 @@
 import styles from './HowItWorks.module.css';
 
 const STEPS = [
-  { id: 'save',  icon: '🛍️', title: 'You save.',   desc: 'Browse our comfort sets and save 15% when you bundle.' },
-  { id: 'ship',  icon: '🚚', title: 'We ship.',    desc: 'We ship your items within 1–2 days of receiving your order.' },
-  { id: 'enjoy', icon: '🌙', title: 'You enjoy!',  desc: 'Wear Byteex around the house, out on the town, or in bed.' },
+  { id: 'save',  icon: '/image/icon-store.svg', title: 'You save.',   desc: 'Browse our comfort sets and save 15% when you bundle.' },
+  { id: 'ship',  icon: '/image/icon-truck.svg', title: 'We ship.',    desc: 'We ship your items within 1–2 days of receiving your order.' },
+  { id: 'enjoy', icon: '/image/icon-moon.svg', title: 'You enjoy!',  desc: 'Wear hernest around the house, out on the town, or in bed.' },
 ];
 
 const STARS = [1,2,3,4,5];
@@ -16,7 +16,9 @@ export default function HowItWorks() {
         <ol className={styles.cards}>
           {STEPS.map(({ id, icon, title, desc }) => (
             <li key={id} className={styles.card}>
-              <span className={styles.cardIcon} aria-hidden="true">{icon}</span>
+              <div className={styles.cardIcon}>
+                <img src={icon} alt="" width="48" height="48" />
+              </div>
               <h3 className={styles.cardTitle}>{title}</h3>
               <p className={styles.cardDesc}>{desc}</p>
             </li>

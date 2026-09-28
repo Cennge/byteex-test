@@ -2,9 +2,9 @@ import styles from './Founder.module.css';
 
 export default function Founder() {
   const images = [
-    '/image/founder-1.png',
-    '/image/founder-2.png',
-    '/image/founder-3.png'
+    '/image/hero-product.png',
+    '/image/founder-small-1.png',
+    '/image/founder-small-2.png'
   ];
 
   return (
@@ -28,13 +28,15 @@ export default function Founder() {
           <div className={styles.bio}>
             <p className={styles.para}>Hi! My name's [Insert Name], and I founded [Insert] in ____.</p>
             <p className={styles.para}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.</p>
-            <p className={styles.para}>Fusce non nibh luctus, dignissim risus quis, bibendum dolor. Donec placerat volutpat ligula, ac consectetur felis varius non. Aliquam a nunc rutrum, porttitor dolor eu, pellentesque est.</p>
+            <p className={styles.para}>Fusce non nibh luctus, dignissim risus quis, bibendum dolor. Donec placerat volutpat ligula, ac consectetur felis varius non. Aliquam a nunc rutrum, porttitor dolor eu, pellentesque est. Vivamus id arcu congue, faucibus libero nec, placerat ligula.</p>
             <p className={styles.para}>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu nisl a metus ultrices sodales.</p>
+            <p className={styles.para}>Fusce non ante velit. Sed auctor odio eu semper molestie. Nam mattis, sapien eget lobortis fringilla, eros ipsum tristique tellus, ac convallis urna massa at nibh.</p>
+            <p className={styles.para}>Duis non fermentum augue. Vivamus laoreet aliquam risus, sed euismod leo aliquam ut. Vivamus in felis eu lacus feugiat aliquam nec in sapien.</p>
+            <p className={styles.para}>Cras mattis varius mollis.</p>
           </div>
           <div className={styles.ctaWrap}>
             <a href="#shop" className={styles.ctaBtn}>
               Customize Your Outfit
-              <span className={styles.ctaBtnArrow} aria-hidden="true">→</span>
             </a>
           </div>
         </div>

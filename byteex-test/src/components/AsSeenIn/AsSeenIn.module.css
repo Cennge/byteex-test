@@ -1,10 +1,14 @@
 .section {
-  padding-block: 32px;
-  border-top: 1px solid var(--gray-100);
+  padding-top: 100px;
+  padding-bottom: 40px;
+  background: linear-gradient(180deg, #F9F0E5 0%, #FFFFFF 100%);
 }
 
 .label {
-  font-size: 20px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
   letter-spacing: 0.03em;
   color: var(--gray-500);
   text-align: center;
@@ -13,16 +17,33 @@
 
 .logos {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: clamp(2rem, 5vw, 5rem);
-  flex-wrap: wrap;
+  gap: clamp(2.5rem, 5vw, 6rem);
 }
 
-.logoPlaceholder {
+.logoImg {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(60%);
+  transition: filter 0.2s;
+}
+
+/* Сделать "eco херню" чуть меньше */
+.logoImg:nth-child(1),
+.logoImg:nth-child(4) {
   height: 28px;
-  width: 80px;
-  background: var(--gray-100);
-  border-radius: 4px;
-  opacity: 0.6;
+}
+
+.logoImg:hover {
+  filter: grayscale(0%) opacity(100%);
+}
+
+@media (max-width: 768px) {
+  .logoImg {
+    height: 32px;
+  }
 }

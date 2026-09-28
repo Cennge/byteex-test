@@ -5,13 +5,15 @@ const SWATCHES = ['#D4C5B5','#8B7355','#C4A882','#9BA89B','#E8D5C4','#6B5B4E','#
 export default function Hero() {
   return (
     <section className={styles.hero} id="hero">
-      <div className={styles.heroBlobTop} aria-hidden="true" />
+      <div className={`wrap ${styles.heroHeader}`}>
+        <a href="/" className={styles.logo}>
+          <img src="/image/logo.svg" alt="Byteex" width="200" height="35" />
+        </a>
+      </div>
+
       <div className={`wrap ${styles.heroInner}`}>
 
         <div className={styles.heroLeft}>
-          <a href="/" className={styles.logo}>
-            <img src="/image/logo.svg" alt="Byteex" width="200" height="35" />
-          </a>
           <h1 className={styles.heroHeadline}>
             Don't apologize for being comfortable.
           </h1>
@@ -35,26 +37,12 @@ export default function Hero() {
               Customize Your Outfit
               <img src="/image/icon-arrow.svg" alt="" width="23" height="10" className={styles.ctaBtnArrow} />
             </a>
-            <div className={styles.heroReviews}>
-              <img src="/image/icon-stars.svg" alt="5 stars" width="80" height="13" className={styles.heroStarsImg} />
-              <span className={styles.heroReviewText}>Over 500+ 5 Star Reviews Online</span>
-            </div>
           </div>
         </div>
 
         <div className={styles.heroRight}>
           <div className={styles.heroImgMain}>
-            <img src="/image/hero-product.png" alt="Byteex loungewear" loading="eager" />
-          </div>
-          <div className={styles.heroSwatches}>
-            {SWATCHES.map((color, i) => (
-              <button
-                key={i}
-                className={`${styles.swatch}${i === 1 ? ` ${styles.active}` : ''}`}
-                style={{ background: color }}
-                aria-label={`Color option ${i + 1}`}
-              />
-            ))}
+            <img src="/image/hero-product-cluster.png" alt="Byteex loungewear cluster" loading="eager" />
           </div>
         </div>
 
