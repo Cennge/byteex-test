@@ -8,14 +8,12 @@ const REVIEWS = [
   { id: 'r3', initials: 'SM', name: 'Sarah M.',  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sollicitudin dolor, non sodales justo. Aenean eget aliquet mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
 ];
 
-const UGC_COLORS = [
-  ['#E8D5C4','#D4C5B5'],['#C4B5A5','#B5A590'],['#9BA89B','#8C9E8A'],
-  ['#E0D0C0','#D0C0B0'],['#A89880','#988870'],['#C8D8C8','#B8C8B8'],
-  ['#D4C0A8','#C4B098'],['#E0D8D0','#D0C8C0'],['#A0B0A0','#90A090'],
-  ['#DCC8B0','#CCC0A0'],['#B0C0B0','#A0B0A0'],
-];
+export default function Reviews() {
+  const ugcImages = Array.from({ length: 22 }, (_, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    return `/image/ugc-${num}.png`;
+  });
 
-export default function Reviews({ ugcImages = [] }) {
   return (
     <section className={styles.section} id="reviews">
       <div className="wrap">
@@ -45,18 +43,9 @@ export default function Reviews({ ugcImages = [] }) {
       <hr className={styles.divider} />
 
       <div className={styles.ugcGrid} aria-label="Customer photos">
-        {UGC_COLORS.map((pair, colIdx) => (
-          <div key={colIdx} className={styles.ugcCol}>
-            {pair.map((color, rowIdx) => {
-              const imgIdx = colIdx * 2 + rowIdx;
-              return (
-                <div key={rowIdx} className={styles.ugcCell}>
-                  {ugcImages[imgIdx]
-                    ? <img src={ugcImages[imgIdx]} alt={`Customer photo ${imgIdx + 1}`} loading="lazy" />
-                    : <div className={styles.ugcPlaceholder} style={{ background: color }} />}
-                </div>
-              );
-            })}
+        {ugcImages.map((src, idx) => (
+          <div key={idx} className={styles.ugcCell}>
+            <img src={src} alt={`Customer photo ${idx + 1}`} loading="lazy" />
           </div>
         ))}
       </div>

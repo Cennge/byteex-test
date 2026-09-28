@@ -1,19 +1,25 @@
 import styles from './Founder.module.css';
 
-export default function Founder({ images = [] }) {
+export default function Founder() {
+  const images = [
+    '/image/founder-1.png',
+    '/image/founder-2.png',
+    '/image/founder-3.png'
+  ];
+
   return (
     <section className={styles.section} id="founder">
       <div className={`wrap ${styles.inner}`}>
 
         <div className={styles.imageCluster}>
           <div className={styles.imgA}>
-            {images[0] ? <img src={images[0]} alt="Founder 1" loading="lazy" /> : <div className={styles.imgPlaceholderA} />}
+            <img src={images[0]} alt="Founder image 1" loading="lazy" />
           </div>
           <div className={styles.imgB}>
-            {images[1] ? <img src={images[1]} alt="Founder 2" loading="lazy" /> : <div className={styles.imgPlaceholderB} />}
+            <img src={images[1]} alt="Founder image 2" loading="lazy" />
           </div>
           <div className={styles.imgC}>
-            {images[2] ? <img src={images[2]} alt="Founder 3" loading="lazy" /> : <div className={styles.imgPlaceholderC} />}
+            <img src={images[2]} alt="Founder image 3" loading="lazy" />
           </div>
         </div>
 

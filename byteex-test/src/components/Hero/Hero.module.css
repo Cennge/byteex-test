@@ -24,6 +24,15 @@
   gap: 2rem;
 }
 
+.logo {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.logo img {
+  display: block;
+}
+
 .heroLeft {
   display: flex;
   flex-direction: column;
@@ -43,15 +52,24 @@
 .heroBullets {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 4px;
 }
 
 .heroBullet {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 15px;
   letter-spacing: 0.03em;
   color: var(--gray-700);
   line-height: 23px;
   padding-block: 2px;
+}
+
+.bulletIcon {
+  width: 31px;
+  height: 31px;
+  flex-shrink: 0;
 }
 
 .heroCta {
@@ -84,7 +102,6 @@
 }
 
 .ctaBtnArrow {
-  font-size: 1.2rem;
   transition: transform 0.2s;
 }
 
@@ -99,12 +116,9 @@
   flex-wrap: wrap;
 }
 
-.heroStars {
-  display: flex;
-  gap: 2px;
+.heroStarsImg {
+  display: block;
 }
-
-.heroStar { color: var(--yellow); font-size: 0.75rem; }
 
 .heroReviewText {
   font-size: 12px;
@@ -129,12 +143,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.heroImgPlaceholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(160deg, #f9f0e5 0%, #eaeaea 100%);
 }
 
 .heroSwatches {

@@ -9,8 +9,10 @@ const FAQS = [
   { id: 'faq5', q: 'Lorem ipsum dolor sit amet',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
 ];
 
-export default function FAQ({ imageSrc }) {
+export default function FAQ() {
   const [openId, setOpenId] = useState(null);
+  const imageSrc = '/image/faq-section-image.png';
+
   return (
     <section className={styles.section} id="faq">
       <div className={`wrap ${styles.inner}`}>
@@ -44,9 +46,7 @@ export default function FAQ({ imageSrc }) {
 
         <div className={styles.imageSide}>
           <div className={styles.productImg}>
-            {imageSrc
-              ? <img src={imageSrc} alt="Product" loading="lazy" />
-              : <div className={styles.imgPlaceholder} />}
+            <img src={imageSrc} alt="Product FAQ" loading="lazy" />
           </div>
         </div>
 
