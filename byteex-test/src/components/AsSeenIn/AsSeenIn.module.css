@@ -32,7 +32,6 @@
   transition: filter 0.2s;
 }
 
-/* Сделать "eco херню" чуть меньше */
 .logoImg:nth-child(1),
 .logoImg:nth-child(4) {
   height: 28px;
