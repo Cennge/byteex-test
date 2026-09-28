@@ -1,0 +1,80 @@
+/* ============================================================
+   FinalCTA Section
+   ============================================================ */
+.cta {
+  padding-block: var(--space-16) var(--space-20);
+  text-align: center;
+}
+
+.cta__tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  letter-spacing: var(--ls-wide);
+  color: var(--color-navy);
+  margin-bottom: var(--space-4);
+}
+
+.cta__sub {
+  font-size: var(--text-base);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text-body);
+  line-height: 1.53;
+  max-width: 540px;
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+}
+
+.cta__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-10);
+  background: var(--color-navy-mid);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  letter-spacing: var(--ls-normal);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.cta__btn:hover {
+  background: var(--color-navy);
+  transform: translateY(-1px);
+}
+
+.cta__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4) var(--space-6);
+}
+
+.cta__trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-gray-700);
+}
+
+.cta__trust-icon {
+  color: var(--color-navy);
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .cta__actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

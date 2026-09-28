@@ -1,0 +1,27 @@
+/* ============================================================
+   AnnouncementBar — Ticker banner (top of page)
+   ============================================================ */
+.bar {
+  background: var(--color-cream);
+  padding-block: var(--space-2);
+  overflow: hidden;
+}
+
+.bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-inline: var(--space-4);
+}
+
+.bar__text {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: var(--ls-wider);
+  color: var(--color-gray-800);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 35px;
+}

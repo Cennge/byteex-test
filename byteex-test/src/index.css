@@ -1,111 +1,163 @@
+/* ============================================================
+   BYTEEX — Design Tokens & Global Styles
+   Mobile-First, CSS Custom Properties
+   ============================================================ */
+
+/* --- Google Fonts fallback mapping ---
+   Sofia Pro  → Inter (similar humanist sans)
+   Suisse Int'l → Inter (similar grotesque sans)
+   Fira Mono  → "Fira Mono" (loaded via Google Fonts)
+*/
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* --- Color Palette --- */
+  --color-white:       #ffffff;
+  --color-cream:       #f9f0e5;
+  --color-cream-light: #f9f0e6;
+  --color-navy:        #01005b;
+  --color-navy-dark:   #15005b;
+  --color-navy-mid:    #1c2e58;
+  --color-navy-blue:   #2a2996;
+  --color-yellow:      #ffb801;
+  --color-gray-100:    #eaeaea;
+  --color-gray-200:    #e6e6e6;
+  --color-gray-300:    #ededed;
+  --color-gray-400:    #c4c4c4;
+  --color-gray-500:    #868787;
+  --color-gray-600:    #828282;
+  --color-gray-700:    #676869;
+  --color-gray-800:    #565656;
+  --color-gray-900:    #484848;
+  --color-text-body:   #6c6c6c;
+  --color-text-muted:  #d3078ee5;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* --- Typography --- */
+  --font-display: 'Fira Mono', 'Courier New', monospace;
+  --font-body:    'Inter', system-ui, sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --text-xs:   0.6875rem;  /* 11px */
+  --text-sm:   0.75rem;    /* 12px */
+  --text-base: 0.9375rem;  /* 15px */
+  --text-md:   1.125rem;   /* 18px */
+  --text-lg:   1.375rem;   /* 22px */
+  --text-xl:   1.5rem;     /* 24px */
+  --text-2xl:  2rem;       /* 32px */
+  --text-3xl:  2.375rem;   /* 38px */
+  --text-4xl:  2.75rem;    /* 44px */
+  --text-5xl:  2.8125rem;  /* 45px */
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* --- Spacing --- */
+  --space-1:  0.25rem;   /* 4px  */
+  --space-2:  0.5rem;    /* 8px  */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+
+  /* --- Border Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-card:  0px 3px 10px 1px rgba(0, 0, 0, 0.08);
+  --shadow-light: 0px 3px 10px 0px rgba(0, 0, 0, 0.08);
+
+  /* --- Letter Spacing --- */
+  --ls-tight:  0.02em;
+  --ls-normal: 0.03em;
+  --ls-wide:   0.04em;
+  --ls-wider:  0.08em;
+
+  /* --- Layout --- */
+  --container-max: 1465px;
+  --container-pad: var(--space-4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-text-body);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.2;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+@media (min-width: 640px) {
+  :root { --container-pad: var(--space-6); }
+}
+
+@media (min-width: 1024px) {
+  :root { --container-pad: var(--space-8); }
+}
+
+@media (min-width: 1280px) {
+  :root { --container-pad: var(--space-16); }
 }

@@ -1,0 +1,81 @@
+/* ============================================================
+   Founder Section — about the brand story
+   ============================================================ */
+.founder {
+  padding-block: var(--space-16) var(--space-20);
+  background: var(--color-gray-100);
+}
+
+.founder__inner {
+  display: grid;
+  gap: var(--space-10);
+}
+
+.founder__media {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-gray-200);
+  aspect-ratio: 3 / 4;
+}
+
+.founder__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.founder__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.founder__label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--ls-wider);
+  color: var(--color-gray-700);
+  text-transform: uppercase;
+}
+
+.founder__title {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: var(--ls-wide);
+  color: var(--color-navy-blue);
+}
+
+.founder__bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.founder__para {
+  font-size: var(--text-base);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text-body);
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .founder__inner {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-16);
+  }
+
+  .founder__media {
+    aspect-ratio: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .founder__inner {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-20);
+  }
+}
