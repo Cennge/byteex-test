@@ -72,3 +72,14 @@
   letter-spacing: 0.04em;
   color: var(--gray-700);
 }
+
+@media (max-width: 899px) {
+  .wrap { max-width: 480px; }
+  .card {
+    max-width: none;
+    margin-top: 31px;
+    padding: 16px 13px 12px;
+    box-shadow: var(--shadow-card);
+  }
+  .cardHeader { margin-bottom: 10px; }
+}

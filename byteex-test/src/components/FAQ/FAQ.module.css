@@ -65,8 +65,42 @@
   border-radius: 50%;
 }
 
-.toggleOpen {
-  transform: rotate(45deg);
+@media (max-width: 899px) {
+  .section { padding-block: 68px 50px; }
+  .inner {
+    gap: 0;
+    max-width: 440px;
+  }
+  .heading {
+    max-width: 318px;
+    margin: 0 auto 25px;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: lowercase;
+  }
+  .faqSide { padding-inline: 23px; }
+  .question { padding-block: 16px; }
+  .questionText {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+  }
+  .toggle { font-weight: 200; }
+  .answer {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: -6px;
+    padding-bottom: 16px;
+  }
+  .imageSide { display: none; }
+  .mobileCta {
+    display: flex;
+    margin-top: 40px;
+    width: auto;
+    margin-inline: -23px;
+  }
 }
 
 .answer {

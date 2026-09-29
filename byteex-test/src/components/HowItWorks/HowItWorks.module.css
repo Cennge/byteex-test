@@ -103,10 +103,76 @@
 .ctaStar { color: var(--yellow); font-size: 0.7rem; }
 .ctaReviewText { font-size: 12px; letter-spacing: 0.02em; color: var(--gray-600); }
 
-@media (min-width: 640px) {
-  .cards { grid-template-columns: 1fr 1fr; }
+.ctaInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-@media (min-width: 1024px) {
+.slider { position: relative; }
+
+.arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  color: var(--gray-700);
+  z-index: 1;
+}
+
+.arrowPrev { left: -10px; }
+.arrowNext { right: -10px; }
+
+@media (max-width: 899px) {
+  .section { padding-block: 57px 40px; }
+  .heading {
+    font-size: 26px;
+    margin-bottom: 23px;
+  }
+  .slider { max-width: 480px; margin-inline: auto; }
+  .arrow { display: flex; }
+  .cards {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    width: min(288px, 100% - 60px);
+    margin-inline: auto;
+  }
+  .cards::-webkit-scrollbar { display: none; }
+  .card {
+    flex: 0 0 100%;
+    aspect-ratio: auto;
+    min-height: 288px;
+    padding: 30px 32px;
+    gap: 10px;
+    scroll-snap-align: center;
+    border: 1px solid var(--gray-border);
+  }
+  .card:hover { transform: none; }
+  .cardIcon { margin-bottom: 0; }
+  .cardTitle {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+  .cardDesc {
+    font-size: 15px;
+    line-height: 23px;
+    color: var(--gray-700);
+  }
+  .ctaWrap { margin-top: 41px; }
+  .ctaInner {
+    width: 100%;
+    max-width: 440px;
+    align-items: stretch;
+  }
+  .ctaBtn { justify-content: center; gap: 24px; }
+}
+
+@media (min-width: 900px) {
   .cards { grid-template-columns: 1fr 1fr 1fr; }
 }

@@ -239,3 +239,58 @@
 .ctaStars { display: flex; gap: 2px; }
 .ctaStar { color: var(--yellow); font-size: 0.7rem; }
 .ctaReviewText { font-size: 11px; letter-spacing: 0.02em; color: var(--gray-600); }
+
+@media (max-width: 899px) {
+  .section { padding-top: 59px; }
+  .header { margin-bottom: 40px; }
+  .heading {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  .sub { max-width: 385px; }
+  .ugcGrid {
+    gap: 5px;
+    padding-inline: 3px;
+    overflow: hidden;
+  }
+  .ugcCol {
+    gap: 5px;
+    min-width: 0;
+  }
+  .ugcCol:nth-child(n + 5) { display: none; }
+  .sliderContainer {
+    max-width: 428px;
+    margin-top: 38px;
+  }
+  .scrollTrack {
+    gap: 80px;
+    padding-block: 10px 20px;
+    padding-inline: calc((100% - 299px) / 2);
+  }
+  .card {
+    flex: 0 0 299px;
+    min-height: 261px;
+    padding: 26px 32px;
+    scroll-snap-align: center;
+    box-shadow: var(--shadow-card);
+  }
+  .avatar {
+    width: 35px;
+    height: 35px;
+    background: var(--navy-mid);
+  }
+  .cardName { font-size: 15px; color: var(--gray-700); }
+  .cardText { font-size: 12px; line-height: 20px; color: var(--gray-700); }
+  .sliderBtn { font-size: 24px; padding: 10px; }
+  .prevBtn { left: 20px; }
+  .nextBtn { right: 20px; }
+  .dots { margin-top: 8px; }
+  .ctaGroup {
+    align-items: stretch;
+    max-width: 440px;
+    margin: 30px auto 0;
+    padding-inline: clamp(1rem, 5vw, 7rem);
+    gap: 11px;
+  }
+  .ctaBtn { justify-content: center; gap: 24px; }
+}

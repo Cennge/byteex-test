@@ -49,6 +49,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 figure { margin: 0; }
 blockquote { margin: 0; padding: 0; }
 
+.dots {
+  display: none;
+  justify-content: center;
+  gap: 7px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c4c4c4;
+}
+.dot[aria-current='true'] { background: #000; }
+
+@media (max-width: 899px) {
+  .dots { display: flex; }
+}
+
 .wrap {
   width: 100%;
   max-width: 1465px;

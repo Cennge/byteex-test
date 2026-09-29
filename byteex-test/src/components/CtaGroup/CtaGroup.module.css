@@ -1,0 +1,47 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 11px;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.mobileOnly { display: none; }
+
+@media (max-width: 899px) {
+  .mobileOnly { display: flex; }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 56px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-btn);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn:hover {
+  background: var(--navy-mid);
+  transform: translateY(-1px);
+}
+
+.arrow { transition: transform 0.2s; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.reviews {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--gray-600);
+}

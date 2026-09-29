@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import styles from './Reviews.module.css';
+import useScrollDots from '../../lib/useScrollDots';
 
 const STARS = [1,2,3,4,5];
 
@@ -11,23 +12,21 @@ const REVIEWS = [
 
 export default function Reviews() {
   const scrollRef = useRef(null);
+  const { active, goTo } = useScrollDots(scrollRef, REVIEWS.length);
 
   const ugcImages = Array.from({ length: 22 }, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
     return `/image/ugc-${num}.png`;
   });
 
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -354, behavior: 'smooth' });
-    }
+  const scrollByCard = (dir) => {
+    const el = scrollRef.current;
+    if (!el?.firstElementChild) return;
+    const step = el.firstElementChild.offsetWidth + parseFloat(getComputedStyle(el).columnGap);
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
   };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 354, behavior: 'smooth' });
-    }
-  };
+  const scrollLeft = () => scrollByCard(-1);
+  const scrollRight = () => scrollByCard(1);
 
   return (
     <section className={styles.section} id="reviews">
@@ -75,6 +74,18 @@ export default function Reviews() {
         <button className={`${styles.sliderBtn} ${styles.nextBtn}`} onClick={scrollRight} aria-label="Next review">
           &#10095;
         </button>
+      </div>
+
+      <div className={`dots ${styles.dots}`}>
+        {REVIEWS.map(({ id }, i) => (
+          <button
+            key={id}
+            className="dot"
+            aria-label={`Show review ${i + 1}`}
+            aria-current={active === i}
+            onClick={() => goTo(i)}
+          />
+        ))}
       </div>
 
       <div className={styles.ctaGroup}>

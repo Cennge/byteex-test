@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './FAQ.module.css';
+import CtaGroup from '../CtaGroup/CtaGroup';
 
 const FAQS = [
   { id: 'faq1', q: 'Lorem ipsum dolor sit amet',        a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
@@ -10,7 +11,7 @@ const FAQS = [
 ];
 
 export default function FAQ() {
-  const [openId, setOpenId] = useState(null);
+  const [openId, setOpenId] = useState(FAQS[0].id);
   const imageSrc = '/image/faq-section-image.png';
 
   return (
@@ -32,7 +33,7 @@ export default function FAQ() {
                       onClick={() => setOpenId(prev => prev === id ? null : id)}
                     >
                       <span className={styles.questionText}>{q}</span>
-                      <span className={isOpen ? `${styles.toggle} ${styles.toggleOpen}` : styles.toggle} aria-hidden="true">+</span>
+                      <span className={styles.toggle} aria-hidden="true">{isOpen ? '−' : '+'}</span>
                     </button>
                   </dt>
                   {isOpen && (
@@ -42,6 +43,7 @@ export default function FAQ() {
               );
             })}
           </dl>
+          <CtaGroup mobileOnly className={styles.mobileCta} />
         </div>
 
         <div className={styles.imageSide}>

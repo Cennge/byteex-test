@@ -181,6 +181,59 @@
   border: 2px solid var(--navy);
 }
 
+@media (max-width: 899px) {
+  .hero { padding-top: 13px; }
+  .heroHeader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .heroInner {
+    gap: 0;
+    max-width: 480px;
+  }
+  .heroLeft { display: contents; }
+  .heroHeadline {
+    order: 1;
+    margin: 0 auto;
+    max-width: 360px;
+    font-size: 26px;
+    line-height: 34px;
+    text-align: center;
+  }
+  .heroRight {
+    order: 2;
+    margin-top: 17px;
+  }
+  .heroImgMain img { transform: none; }
+  .heroBullets {
+    order: 3;
+    margin-top: 24px;
+    padding-left: 26px;
+    gap: 26px;
+  }
+  .heroBullet {
+    gap: 14px;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 0;
+  }
+  .bulletIcon {
+    width: 31px;
+    height: 31px;
+    padding: 6px;
+  }
+  .heroCta {
+    order: 4;
+    align-items: stretch;
+    margin-top: 36px;
+  }
+  .ctaBtn {
+    width: 100%;
+    background: var(--navy);
+  }
+}
+
 @media (min-width: 900px) {
   .heroInner {
     grid-template-columns: 45% 55%;

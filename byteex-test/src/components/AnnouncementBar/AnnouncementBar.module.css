@@ -17,3 +17,14 @@
   text-align: center;
   line-height: 35px;
 }
+.barText span + span::before {
+  content: '|';
+  margin-inline: 0.75em;
+}
+
+@media (max-width: 899px) {
+  .barInner { padding-block: 0; }
+  .barText { text-transform: none; line-height: 36px; }
+  .secondary { display: none; }
+  .barText span + span::before { content: none; }
+}

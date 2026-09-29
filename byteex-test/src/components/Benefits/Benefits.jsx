@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './Benefits.module.css';
 import { getBenefits } from '../../lib/contentful';
+import CtaGroup from '../CtaGroup/CtaGroup';
 
 const FALLBACK_BENEFITS = [
   { id: 'sourced', icon: '/image/icon-bullet-2.svg', title: 'Ethically sourced.', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.' },
@@ -68,6 +69,7 @@ export default function Benefits() {
           <p className={styles.productLabel}>White Robe</p>
         </div>
 
+        <CtaGroup mobileOnly className={styles.mobileCta} />
       </div>
     </section>
   );

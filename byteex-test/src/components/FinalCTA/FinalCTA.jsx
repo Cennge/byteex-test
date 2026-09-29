@@ -1,4 +1,5 @@
 import styles from './FinalCTA.module.css';
+import CtaGroup from '../CtaGroup/CtaGroup';
 
 const STARS = [1,2,3,4,5];
 
@@ -8,13 +9,16 @@ export default function FinalCTA() {
       <div className={styles.blobBottom} aria-hidden="true" />
       <div className="wrap">
         <h2 className={styles.heading}>Find something you love.</h2>
-        <p className={styles.sub}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.</p>
+        <p className={`${styles.sub} ${styles.subDesktop}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.</p>
+        <p className={`${styles.sub} ${styles.subMobile}`}>Click below to browse our collection!</p>
         
         <div className={styles.imageCluster}>
           <img src="/image/finalcta-product-left.png" alt="" className={styles.imgLeft} loading="lazy" />
           <img src="/image/finalcta-product-center.png" alt="" className={styles.imgCenter} loading="lazy" />
           <img src="/image/finalcta-product-right.png" alt="" className={styles.imgRight} loading="lazy" />
         </div>
+
+        <CtaGroup mobileOnly />
 
         <div className={styles.ctaGroup}>
           <a href="#shop" className={styles.ctaBtn}>

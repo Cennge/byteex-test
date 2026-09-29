@@ -1,4 +1,6 @@
+import { useRef } from 'react';
 import styles from './AsSeenIn.module.css';
+import useScrollDots from '../../lib/useScrollDots';
 
 const LOGOS = [
   { src: '/image/logo-press-1.png', alt: 'Eco-Stylist' },
@@ -8,14 +10,30 @@ const LOGOS = [
   { src: '/image/logo-press-5.png', alt: 'TrendHunter' },
 ];
 
+const DOT_COUNT = 3;
+
 export default function AsSeenIn() {
+  const trackRef = useRef(null);
+  const { active, goTo } = useScrollDots(trackRef, DOT_COUNT);
+
   return (
     <section className={styles.section}>
       <div className="wrap">
         <p className={styles.label}>as seen in</p>
-        <div className={styles.logos}>
-          {LOGOS.map(({ src, alt }, i) => (
-            <img key={i} src={src} alt={alt} className={styles.logoImg} />
+        <div className={styles.logos} ref={trackRef}>
+          {LOGOS.map(({ src, alt }) => (
+            <img key={src} src={src} alt={alt} className={styles.logoImg} />
+          ))}
+        </div>
+        <div className="dots">
+          {Array.from({ length: DOT_COUNT }, (_, i) => (
+            <button
+              key={i}
+              className="dot"
+              aria-label={`Show logos ${i + 1}`}
+              aria-current={active === i}
+              onClick={() => goTo(i)}
+            />
           ))}
         </div>
       </div>

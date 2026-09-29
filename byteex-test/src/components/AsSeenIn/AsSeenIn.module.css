@@ -41,8 +41,32 @@
   filter: grayscale(0%) opacity(100%);
 }
 
-@media (max-width: 768px) {
-  .logoImg {
-    height: 32px;
+@media (max-width: 899px) {
+  .section { padding-top: 75px; padding-bottom: 20px; }
+  .label {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 14px;
   }
+  .logos {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 32px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * clamp(1rem, 5vw, 7rem));
+    padding-inline: clamp(1rem, 5vw, 7rem);
+    scroll-padding-inline: clamp(1rem, 5vw, 7rem);
+    margin-bottom: 20px;
+  }
+  .logos::-webkit-scrollbar { display: none; }
+  .logoImg {
+    flex-shrink: 0;
+    height: 32px;
+    scroll-snap-align: start;
+  }
+  .logoImg:nth-child(1),
+  .logoImg:nth-child(4) { height: 22px; }
 }
